@@ -18,20 +18,6 @@
 \usepackage{tikz}
 \usepackage{soul} % For underline customization
 
-\hypersetup{
-  colorlinks=true,
-  linkcolor=accent,
-  filecolor=accent,
-  urlcolor=accent,
-  pdftitle={Sveinbjörn Geirsson - CV}, % Title
-  pdfauthor={Sveinbjörn Geirsson},     % Author
-  pdfsubject={Software Developer Resume}, % Subject
-  pdfkeywords={resume, CV, software developer, cloud infrastructure, Iceland}, % Keywords
-  pdfcreator={XeLaTeX},               % Creator
-  pdfproducer={XeLaTeX with hyperref}, % Producer
-  pdfcreationdate={D:20250113090000}, % Creation date in the format YYYYMMDDHHMMSS
-  pdfmoddate={D:20250113090000}       % Modification date in the same format
-}
 
 % In the preamble, define a consistent spacing
 \newlength{\qrspacing}
@@ -49,11 +35,13 @@
 % Colors
 \definecolor{primarytext}{HTML}{000000}
 \definecolor{secondarytext}{HTML}{4B5563}
-\definecolor{accent}{HTML}{2563EB}
 \definecolor{c02529c}{RGB}{2,82,156}
 \definecolor{cdc1e35}{RGB}{220,30,53}
 \definecolor{c003897}{RGB}{0,56,151}
 \definecolor{cd72828}{RGB}{215,40,40}
+\definecolor{linkcolor}{HTML}{4A5568}  % Subtle blue-gray
+\definecolor{accent}{HTML}{5A6572}  % Slightly lighter than secondarytext
+
 
 
 % Font configuration
@@ -65,15 +53,23 @@
   BoldItalicFeatures={Font=* Bold Italic}
 ]
 
-% Hyperref setup
 \hypersetup{
-  colorlinks=true,
-  linkcolor=accent,
-  filecolor=accent,
-  urlcolor=accent,
-  pdftitle={Sveinbjörn Geirsson - CV},
-  pdfauthor={Sveinbjörn Geirsson},
-  pdfsubject={Curriculum Vitae}
+  pdftitle={Sveinbjörn Geirsson - CV}, % Title
+  pdfauthor={Sveinbjörn Geirsson},     % Author
+  pdfsubject={Software Developer Resume}, % Subject
+  pdfkeywords={resume, CV, software developer, cloud infrastructure, Iceland}, % Keywords
+  pdfcreator={XeLaTeX},               % Creator
+  pdfproducer={XeLaTeX with hyperref}, % Producer
+  pdfcreationdate={D:20250113090000}, % Creation date in the format YYYYMMDDHHMMSS
+  pdfmoddate={D:20250113090000},       % Modification date in the same format
+  colorlinks=false,
+  linkcolor=linkcolor,
+  filecolor=linkcolor,
+  urlcolor=linkcolor,
+  pdfborderstyle={/S/U/W 1},  % Underline style
+  linkbordercolor={.5 .5 .5},  % Very light gray
+  filebordercolor={.5 .5 .5},
+  urlbordercolor={.5 .5 .5}
 }
 
 \newcommand{\isFlag}{%
@@ -198,9 +194,7 @@
 % Now include the Icelandic content from cv_is.tex, maintaining the new structure
 
 \begin{minipage}[t]{0.25\textwidth}  % Left side for photo
-  \vspace{0pt}
-  \includegraphics[width=\linewidth,keepaspectratio]{portrait.jpg}
-\end{minipage}%
+  \end{minipage}%
 \hspace{1cm}%
 \begin{minipage}[t]{0.45\textwidth}  % Middle for text
   \vspace{0pt}
@@ -211,7 +205,7 @@
   \faMapMarker\ Vifilsgata 15, Reykjavík, 105, Iceland\\[0.2cm]
   \faBirthdayCake\ April 1986
 \end{minipage}%
-\begin{minipage}[t]{0.25\textwidth}  % Right side for links with QR codes
+\begin{minipage}[t]{0.5\textwidth}  % Right side for links with QR codes
   \vspace{0pt}
   \raggedleft
   \qrlink{https://sveinbjorn.dev}{\faGlobe\ sveinbjorn.dev}\\[0.3cm]
@@ -363,9 +357,9 @@ Hugbúnaðarsérfræðingur með yfir áratugs reynslu í greiðslukortaiðnaði
 \item \workentry{missing.cat}{2021}{Kötturinn minn týndist, og svo ótrúlega vildi til að þetta lén var laust}{      
       Var upphaflega útfært mjög rösklega, og því frekar gróf lausn, en innihélt upphaflega:
       \begin{itemize}[leftmargin=2em]
-        \item href{https://ghost.org/}{Ghost CMS} sem framenda.
-        \item href{https://developers.google.com/gmail/api}{Google Workspace API} fyrir tölvupóstþjónustu (SMTP/IMAP), með pósthólfi sem áframsendi allan póst til mín og eiginkonu minnar.
-        \item Innbyggðan href{https://developers.facebook.com/docs/messenger-platform/}{Facebook Messenger}, sem tengdist okkur í gegnum "Causes"-síðu.
+        \item \href{https://ghost.org/}{Ghost CMS} sem framenda.
+        \item \href{https://developers.google.com/gmail/api}{Google Workspace API} fyrir tölvupóstþjónustu (SMTP/IMAP), með pósthólfi sem áframsendi allan póst til mín og eiginkonu minnar.
+        \item Innbyggðan \href{https://developers.facebook.com/docs/messenger-platform/}{Facebook Messenger}, sem tengdist okkur í gegnum "Causes"-síðu.
       \end{itemize}
        \qrlink{https://web.archive.org/web/20221209180934/http://missing.cat/}{\faLink\ missing.cat}
 }
@@ -393,17 +387,22 @@ Hugbúnaðarsérfræðingur með yfir áratugs reynslu í greiðslukortaiðnaði
 
 \cvheading{Meðmælendur}
 \begin{multicols}{2}
-	\textbf{Tómas Árni Jónsson}\\
-	Hugbúnaðarsérfræðingur hjá Deloitte\\
-	\faPhone\ +354 892 6309\\
-	\faEnvelope\ tomasarni@gmail.com
-	\columnbreak
-
-	\textbf{Þráinn Guðbjörnsson}\\
-	Áhættustjóri hjá Festu\\
-	\faPhone\ +354 863 8308\\
-	\faEnvelope\ thrainn@gmail.com
-	\columnbreak
-\end{multicols}
-
+  \raggedright
+  % First reference
+  \textbf{Tómas Árni Jónsson}\\[0.2cm]
+  Hugbúnaðarsérfræðingur @ Deloitte\\[0.4cm]
+  \textit{Samstarf við aðlögun kjarnakerfa RL að gagnaskilakerfi Seðlabanka Íslands, 2023--2024}\\[0.4cm]
+  \href{tel:+3548926309}{{\color{accent}\faPhone\hspace{0.3em}+354 892 6309}}\\[0.4cm]
+  \href{mailto:tomasarni@gmail.com}{{\color{accent}\faEnvelope\hspace{0.3em}tomasarni@gmail.com}}
+  
+  \columnbreak
+  
+  % Second reference
+  \textbf{Þráinn Guðbjörnsson}\\[0.2cm]
+  Áhættustjóri @ Festa Lífeyrissjóður\\[0.4cm]
+  \textit{Þróun fyrstu kerfa Korta sem annar og þriðji forritari fyrirtækisins, 2013–2017.}\\[0.4cm]
+  \href{tel:+3548638308}{{\color{accent}\faPhone\hspace{0.3em}+354 863 8308}}\\[0.4cm]
+  \href{mailto:thrainn@gmail.com}{{\color{accent}\faEnvelope\hspace{0.3em}thrainn@gmail.com}}
+  \end{multicols}
+  
 \end{document}
