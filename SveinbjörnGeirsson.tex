@@ -16,16 +16,14 @@
 \usepackage{needspace}
 \usepackage{svg}
 \usepackage{tikz}
-\usepackage{soul} % For underline customization
+\usepackage{soul}
 \usepackage{url}
-
 
 % In the preamble, define a consistent spacing
 \newlength{\qrspacing}
-\setlength{\qrspacing}{1em}  % Adjust this value as needed
+\setlength{\qrspacing}{1em}
 
-
-% Page geometry - compact margins
+% Page geometry
 \geometry{
   top=1.2cm,
   bottom=1.2cm,
@@ -40,10 +38,8 @@
 \definecolor{cdc1e35}{RGB}{220,30,53}
 \definecolor{c003897}{RGB}{0,56,151}
 \definecolor{cd72828}{RGB}{215,40,40}
-\definecolor{linkcolor}{HTML}{4A5568}  % Subtle blue-gray
-\definecolor{accent}{HTML}{5A6572}  % Slightly lighter than secondarytext
-
-
+\definecolor{linkcolor}{HTML}{4A5568}
+\definecolor{accent}{HTML}{5A6572}
 
 % Font configuration
 \setmainfont{InterNerdFontPropo}[
@@ -61,25 +57,28 @@
     BoldItalicFeatures={Font=* Bold Italic}
 ]
 
-
+% Hyperref setup
 \hypersetup{
-  pdftitle={Sveinbjörn Geirsson - CV}, % Title
-  pdfauthor={Sveinbjörn Geirsson},     % Author
-  pdfsubject={Software Developer Resume}, % Subject
-  pdfkeywords={resume, CV, software developer, cloud infrastructure, Iceland}, % Keywords
-  pdfcreator={XeLaTeX},               % Creator
-  pdfproducer={XeLaTeX with hyperref}, % Producer
-  pdfcreationdate={D:20250113090000}, % Creation date in the format YYYYMMDDHHMMSS
-  pdfmoddate={D:20250113090000},       % Modification date in the same format
-  colorlinks=false,
+  pdftitle={Sveinbjörn Geirsson - Ferilskrá},
+  pdfauthor={Sveinbjörn Geirsson},
+  pdfsubject={Software Ferilskrá},
+  pdfkeywords={resume, CV, software developer, cloud infrastructure, Iceland},
+  pdfcreator={XeLaTeX},
+  pdfproducer={XeLaTeX with hyperref},
+  unicode=true,
+  pdfborder={0 0 0},
+  breaklinks=true,
+  colorlinks=true,
   linkcolor=linkcolor,
   filecolor=linkcolor,
   urlcolor=linkcolor,
-  pdfborderstyle={/S/U/W 1},  % Underline style
-  linkbordercolor={.5 .5 .5},  % Very light gray
-  filebordercolor={.5 .5 .5},
-  urlbordercolor={.5 .5 .5}
+  pdfnewwindow=true,
+  pdfdisplaydoctitle=true
 }
+
+% Fix enumitem settings
+\setlist[itemize,1]{leftmargin=*}
+\setlist[description]{leftmargin=1em,style=nextline}
 
 \newcommand{\isFlag}{%
 \begin{tikzpicture}[y=0.3cm, x=0.3cm, yscale=0.1, xscale=0.1, every node/.append style={scale=0.1}, inner sep=0pt, outer sep=0pt]
@@ -119,27 +118,29 @@
 \newcommand{\qrlink}[2]{%
   \href{#1}{#2}% Makes the text clickable
   \hspace{0.5em}%
-  \raisebox{-0.2\height}{\qrcode[height=1.1cm, version=5, level=Q]{#1}}% Keeps the QR code
+  \raisebox{-0.2\height}{%
+    \qrcode[height=1.1cm,version=4,level=Q]{#1}%
+  }% QR code with optimized settings
 }
 
-
-\newcommand{\certlink}[3][]{%  % Optional platform parameter
+\newcommand{\certlink}[3][]{%
   \href{#2}{%
-    \ifx\\#1\\%  % If no platform specified
+    \ifx\\#1\\%
       #3%
     \else%
-      \ifx\udemy#1%  % If platform is Udemy
+      \ifx\udemy#1%
         \udemy\ %
       \else%
-        \ifx\coursera#1%  % If platform is Coursera
+        \ifx\coursera#1%
           \coursera\ %
         \fi%
       \fi%
       #3%
     \fi%
   }%
-  \raisebox{-0.2\height}{\qrcode[height=1.0cm, version=5, level=Q]{#2}\vspace{0.05cm}} %
-  % \raisebox{-0.2\height}{\qrcode[height=1.1cm, version=5, level=Q]{#2}}% Keeps the QR code
+  \raisebox{-0.2\height}{%
+    \qrcode[height=1.0cm,version=4,level=Q]{#2}%
+  }%
 }
 
 % Define a new command for certification entries with the new layout
@@ -157,24 +158,24 @@
     \vspace{0.8cm}
 }
 
-% Create a command for project entries with support for multiple links
 \newcommand{\projectentry}[5]{%  % #1=name, #2=year, #3=subtitle, #4=description, #5=links
-    \item \textbf{#1} \hfill \textit{#2}\\
-    \textit{#3}\\[0.1cm]
-    \begin{minipage}{\textwidth}
+    \item 
+    \textbf{#1} \hfill \textit{#2}\\
+    \textit{#3}\\[0.05cm]
+    \begin{minipage}[t]{\linewidth}
         #4
-    \end{minipage}\\[0.1cm]
-    \begin{minipage}{\textwidth}
-        \raggedright
+        \vspace{0.05cm}
         #5
     \end{minipage}
     \vspace{0.1cm}
 }
 
 
-% Create a command for project links with QR codes that handles special URLs
-\newcommand{\projectlink}[2]{%  % #1=url, #2=display text
-    \href{#1}{#2}\hspace{0.5em}\raisebox{-0.2\height}{\qrcode[height=0.9cm]{#1}}\hspace{1em}%
+\newcommand{\projectlink}[2]{%
+  \href{#1}{#2}\hspace{0.5em}%
+  \raisebox{-0.2\height}{%
+    \qrcode[height=0.9cm,version=3,level=Q]{#1}%
+  }\hspace{1em}%
 }
 
 % Create a simpler link command without QR code for reference links
@@ -222,10 +223,10 @@
   \vspace{0pt}
   {\LARGE\textbf{Sveinbjörn Geirsson}}\\[0.3cm]
   Tölvunarfræðingur\\[0.4cm]
-  \faEnvelope\ sveinbjorn@sveinbjorn.dev\\[0.2cm]
-  \faPhone\ (+354) 849 2544\\[0.2cm]
-  \faMapMarker\ Vifilsgata 15, Reykjavík, 105, Iceland\\[0.2cm]
-  \faBirthdayCake\ April 1986
+  \href{mailto:sveinbjorn@sveinbjorn.dev}{\faEnvelope\ sveinbjorn@sveinbjorn.dev}\\[0.2cm]
+  \href{tel:+3548492544}{\faPhone\ 849 2544}\\[0.2cm]
+  \faMapMarker\ Vífilsgata 15, 105 Reykjavík\\[0.2cm]
+  \faBirthdayCake\ Apríl 1986
 \end{minipage}%
 \begin{minipage}[t]{0.5\textwidth}  % Right side for links with QR codes
   \vspace{0pt}
@@ -364,7 +365,7 @@ Hugbúnaðarsérfræðingur með yfir áratugs reynslu í greiðslukortaiðnaði
 \end{multicols}
 
 \cvheading{Verkefni}
-\begin{itemize}[leftmargin=*]
+\begin{itemize}[leftmargin=2em]
  
  \projectentry{missing.cat}{2021}
  {Kötturinn minn týndist, og svo ótrúlega vildi til að þetta lén var laust}
@@ -378,18 +379,18 @@ Hugbúnaðarsérfræðingur með yfir áratugs reynslu í greiðslukortaiðnaði
 
  \projectentry{ipChecker}{2020}
  {Aðgreinir innlenda umferð frá erlendri}
- {PHP útfærsla á nálguninni sem lýst er af Reykjavík Internet Exchange (RIX) til að skera úr um hvort IP-tala er íslensk án þess að reiða sig á gagnagrunn frá þriðja aðila.}
+ {PHP útfærsla á nálguninni sem lýst er af Reykjavík Internet Exchange (RIX) til að skera úr um hvort IP-tala er íslensk án þess að reiða sig á gagnagrunn frá þriðja aðila.\\}
  {\projectlink{https://github.com/Raudbjorn/ipChecker}{\faGithub\ Raudbjorn/ipChecker}}
- {\projectlink{https://www.rix.is/is-as-nets\%23:~:text=Uppfletting\%20i\%20DNS}{\faLink\ rix.is}}
+ {\projectlink{https://www.rix.is/is-as-nets}{\faLink\ rix.is}}
 
  \projectentry{Knapsack Optimizer Service}{2019}
  {Hæfnispróf}
- {Gámavædd, ósamstillt, REST-leg, skyndiminnug vefþjónusta, sem getur leyst Hnappapokavandamálið - frægt vandamál í tölvunarfræði. Leyst sem hluti af ráðningarferli stórrar alþjóðlegrar samsteypu.}
+ {Gámavædd, ósamstillt, REST-leg, skyndiminnug vefþjónusta, sem getur leyst Hnappapokavandamálið - frægt vandamál í tölvunarfræði. Leyst sem hluti af ráðningarferli stórrar alþjóðlegrar samsteypu.\\}
  {\projectlink{https://github.com/Raudbjorn/knapsack-optimizer-service}{\faGithub\ Raudbjorn/knapsack-optimizer-service}}
 
 \projectentry{Leiguvaktin.is}{2014}
 {Staða framboðs á leigumarkaði Reykjavíkur}
-{ Tilraunagæluverkefni sem miðar að því að koma samantekt á lifandi gögnum um íbúðir til leigu á Íslandi frá mörgum auglýsendum á einn stað.}
+{ Tilraunagæluverkefni sem miðar að því að koma samantekt á lifandi gögnum um íbúðir til leigu á Íslandi frá mörgum auglýsendum á einn stað.\\}
 {\projectlink{https://github.com/Raudbjorn/leiguvaktin}{\faGithub\ Raudbjorn/leiguvaktin}}
 {\projectlink{https://web.archive.org/web/20160111052408/http://leiguvaktin.is/}{\faLink\ leiguvaktin.is}}
 
@@ -400,38 +401,42 @@ Hugbúnaðarsérfræðingur með yfir áratugs reynslu í greiðslukortaiðnaði
 \cvheading{Námskeið og Vottanir}
 \begin{multicols}{2}
 
-% Left column
-\certentry[\udemy]{https://www.udemy.com/certificate/UC-a18343db-3291-4e45-849b-68a584aaac40}{DevOps Ansible Automation}{2023}
 
-\certentry[\udemy]{https://www.udemy.com/certificate/UC-P60ZSDBZ}{The Rust Programming Language}{2018}
 
-\certentry[\coursera]{https://www.coursera.org/account/accomplishments/verify/6ZECRXNYKFSA}{Functional Programming in Scala}{2016}
-
-\columnbreak
-
-% Right column
-\certentry[\coursera]{https://www.coursera.org/account/accomplishments/verify/VB7GCM8TMN}{Usable Security}{2015}
-
-\certentry[\coursera]{https://www.coursera.org/account/accomplishments/verify/MYTYH9LQ7V}{Cryptography}{2015}
-
-\certentry[\coursera]{https://www.coursera.org/account/accomplishments/verify/RPFNLVGPF3}{Software Security}{2014}
-
-\end{multicols}
+  % Left column
+  \certentry[\udemy]{https://www.udemy.com/certificate/UC-a18343db-3291-4e45-849b-68a584aaac40}{DevOps Ansible Automation}{2023}
+  
+  \certentry[\udemy]{https://www.udemy.com/certificate/UC-P60ZSDBZ}{The Rust Programming Language}{2018}
+  
+  \certentry[\coursera]{https://www.coursera.org/account/accomplishments/verify/6ZECRXNYKFSA}{Functional Programming in Scala}{2016}
+  
+  \columnbreak
+  
+  % Right column
+  \certentry[\coursera]{https://www.coursera.org/account/accomplishments/verify/VB7GCM8TMN}{Usable Security}{2015}
+  
+  \certentry[\coursera]{https://www.coursera.org/account/accomplishments/verify/MYTYH9LQ7V}{Cryptography}{2015}
+  
+  \certentry[\coursera]{https://www.coursera.org/account/accomplishments/verify/RPFNLVGPF3}{Software Security}{2014}
+  
+  \end{multicols}
+  
+  
 
 \cvheading{Viðurkenningar}
-
+\begin{itemize}[leftmargin=2em, itemsep=0.2em]
 \projectentry{Rapyd Internal Hackathon}{2021}
 {Sigurvegari}
 {Teymið aðlagaði Rapyd Wallet að WhatsApp Business API; úrlausnin var sandkössuð, fullvirk, prótótípa, þar sem viðskiptavinur getur:
-\begin{itemize}[leftmargin=2em, itemsep=0.2em, topsep=0.2em, bottomsep=0.2em]
-\item Borgað fyrir pöntun á veitingastað innan úr WhatsApp með greiðsluhlekk eða geymdum skilríkjum.
-\item Notað WhatsApp til að biðja tengilið um að greiða fyrir pöntunina; við samþykki er greiðslu ráðstafað úr veski tengiliðsins.
-\item Óskað eftir að tengiliður greiði, og að fengnu samþykki innan WhatsApp, myndi leyfa notkun á veskinu sínu fyrir viðskiptin.
-\end{itemize}
+\begin{itemize}[leftmargin=2em, topsep=0.2em]
+  \item Pay for a restaurant order from inside the app, using a generated link or stored credentials.
+  \item Using WhatsApp, ask a contact to pay for the order. Upon approval, payment for the transaction comes from the contact's funds.
+  \item Request a contact pay for the order, and upon approval from inside WhatsApp, would authorize the use of their wallet for the transaction.
+  \end{itemize}
 }
-{\projectlink{https://community.rapyd.net/t/whatsapp-checkout/1667\%23:~:text=\%E2\%80\%9CPython\%20was\%20great.\%20Simple\%20syntax.\%20Excellent\%20for\%20prototyping.\%E2\%80\%9D\%20says\%20Sveinbj\%C3\%B6rn,Sveinbj\%C3\%B6rn}{\faNewspaper\ rapyd.net}}
+{\projectlink{https://community.rapyd.net/t/whatsapp-checkout/1667}{\faNewspaper\ rapyd.net}}
 {\projectlink{https://github.com/Rapyd-Samples/whatsapp-checkout}{\faGithub\ Rapyd-Samples/whatsapp-checkout}}
-
+\end{itemize}
 
 
 
