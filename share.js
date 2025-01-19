@@ -41,7 +41,7 @@ const MultiShare = () => {
             src: "/linkedin.svg"
          }),
         share: () => {
-          const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(cvUrl)}&title=${encodeURIComponent(cvTitle)}`;
+          const url = `https://www.linkedin.com/sharing/share-offsite/?url=(cvUrl)&title=${encodeURIComponent(cvTitle)}`;
           window.open(url, '_blank');
         }
       },
