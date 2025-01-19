@@ -1,4 +1,4 @@
-import {  cvRootUrl, cvTitle } from '/cv.mjs';
+import {  cvUrl, cvTitle } from '/cv.mjs';
 
 const { useState } = React;
 
@@ -25,10 +25,10 @@ const MultiShare = () => {
          src: "/slack.svg"
       }),
       share: () => {
-        const url = `slack://channel?team=&id=&message=${encodeURIComponent(`Check out my CV: ${cvRootUrl}`)}`;
+        const url = `slack://channel?team=&id=&message=${encodeURIComponent(`Sveinbjörn Geirsson Ferilskrá ${cvUrl}`)}`;
         window.open(url, '_blank');
         setTimeout(() => {
-          window.open(`https://slack.com/app_redirect?channel=&message=${encodeURIComponent(`Check out my CV: ${cvRootUrl}`)}`, '_blank');
+          window.open(`https://slack.com/app_redirect?channel=&message=${encodeURIComponent(`Sveinbjörn Geirsson Ferilskrá ${cvUrl}`)}`, '_blank');
         }, 1000);
       }
     },
@@ -41,7 +41,7 @@ const MultiShare = () => {
             src: "/linkedin.svg"
          }),
         share: () => {
-          const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(cvRootUrl)}&title=${encodeURIComponent(cvTitle)}`;
+          const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(cvUrl)}&title=${encodeURIComponent(cvTitle)}`;
           window.open(url, '_blank');
         }
       },
@@ -54,7 +54,7 @@ const MultiShare = () => {
         src: "/teams.svg"
      }),
       share: () => {
-        const url = `https://teams.microsoft.com/share?href=${encodeURIComponent(cvRootUrl)}&msgText=${encodeURIComponent(cvTitle)}`;
+        const url = `https://teams.microsoft.com/share?href=${encodeURIComponent(cvUrl)}&msgText=${encodeURIComponent(cvTitle)}`;
         window.open(url, '_blank');
       }
     },
@@ -67,7 +67,7 @@ const MultiShare = () => {
         src: "/outlook.svg"
      }),
       share: () => {
-        const url = `https://outlook.office.com/mail/deeplink/compose?subject=${encodeURIComponent(cvTitle)}&body=${encodeURIComponent(`Check out my CV: ${cvRootUrl}`)}`;
+        const url = `https://outlook.office.com/mail/deeplink/compose?subject=${encodeURIComponent(cvTitle)}&body=${encodeURIComponent(`Sveinbjörn Geirsson Ferilskrá ${cvUrl}`)}`;
         window.open(url, '_blank');
       }
     }
@@ -80,7 +80,7 @@ const MultiShare = () => {
       React.createElement(ShareButton, {
         key,
         platform,
-        url: cvRootUrl,
+        url: cvUrl,
         onClick: platform.share
       })
     )
