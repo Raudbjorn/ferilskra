@@ -7,17 +7,17 @@
 
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sveinbjorn.dev/">
-    <meta property="og:title" content="Sveinbjorn Geirsson - CV">
-    <meta property="og:description" content="Professional CV and Portfolio of Sveinbjorn Geirsson">
-    <meta property="og:image" content="https://sveinbjorn.dev/og-image.jpg">
+    <meta property="og:url" content="https://xn--sveinbjrn-r1a.is">
+    <meta property="og:title" content="Sveinbjorn Geirsson - Ferilskrá">
+    <meta property="og:description" content="Sveinbjörn Geirsson - Ferilskrá">
+    <meta property="og:image" content="https://xn--sveinbjrn-r1a.is/og-image.jpg">
 
     <!-- Additional tags for Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://sveinbjorn.dev/">
-    <meta name="twitter:title" content="Sveinbjorn Geirsson - CV">
-    <meta name="twitter:description" content="Professional CV and Portfolio of Sveinbjorn Geirsson">
-    <meta name="twitter:image" content="https://sveinbjorn.dev/og-image.jpg">
+    <meta name="twitter:url" content="https://xn--sveinbjrn-r1a.is">
+    <meta name="twitter:title" content="Sveinbjorn Geirsson - Ferilskrá">
+    <meta name="twitter:description" content="Sveinbjörn Geirsson - Ferilskrá">
+    <meta name="twitter:image" content="https://xn--sveinbjrn-r1a.isog-image.jpg">
 
     <!-- Alternative language versions -->
     <link rel="alternate" href="https://sveinbjorn.dev" hreflang="en">
@@ -93,7 +93,7 @@
             padding: 10px;
             border-radius: 10px;
             z-index: 100;
-        }
+        } 
 
         .control-button {
             width: 44px;
@@ -148,29 +148,29 @@
                 height: 50px;
             }
         }
-
-        #controls {
-            display: flex;
+ 
+        /* #controls {
+            display: flexbox;
             gap: 1rem;
             padding: 1rem;
-            align-items: center;
-        }
+            align-items: center;    
+        }  */
 
         .relative {
             position: relative;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="/share.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 </head>
 
 <body>
     <div id="controls">
-        <button id="print" class="control-button" aria-label="Print PDF">
+        <!-- <button id="print" class="control-button" aria-label="Print PDF">
             <i class="fas fa-print"></i>
-        </button>
+        </button> -->
         <button id="download" class="control-button" aria-label="Download PDF">
             <i class="fas fa-download"></i>
         </button>
@@ -179,7 +179,6 @@
     <div id="loading">Hleð PDF...</div>
     <div id="viewer" role="document" aria-label="PDF Viewer"></div>
     <script type="module" src="cv.mjs"></script>
-    <!-- <script type="module" src="teams-share.js"></script> -->
      <script type="module" src="share.js"></script> 
 </body>
 
