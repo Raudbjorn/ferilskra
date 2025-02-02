@@ -1,0 +1,7 @@
+include: [".well-known"]
+
+defaults:
+  - scope:
+      path: ".well-known/atproto-did"
+    values:
+      layout: none
