@@ -49,7 +49,7 @@ cleanup() {
 
 # Function to build a single language version
 build_language() {
-    local lang=$1
+    local lang="icelandic"
     local output_name
     if [ "$lang" = "icelandic" ]; then
         output_name="SveinbjörnGeirsson"
@@ -57,7 +57,7 @@ build_language() {
         output_name="SveinbjornGeirsson"
     fi
     echo "Building ${lang} version..."
-    xelatex -interaction=nonstopmode -shell-escape "\def\cvlanguage{${lang}} \input{cv.tex}" > /dev/null
+    xelatex -interaction=nonstopmode cv.tex 2>&1 > /dev/null
     mv cv.pdf "${output_name}.pdf"
 }
 
