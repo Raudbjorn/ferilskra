@@ -11,7 +11,7 @@ Simple, fast, and reliable CV hosting using GitHub Pages, Cloudflare, and Mozill
 
 ```
 ├── index.html          # PDF.js viewer wrapper
-├── SveinbjornGeirsson.pdf  # CV document
+├── SveinbjörnGeirsson.pdf  # CV document
 ├── CNAME               # Custom domain configuration
 └── README.md           # This file
 ```
@@ -26,7 +26,7 @@ This setup provides a **zero-cost, highly available** CV hosting solution:
 - Automatic HTTPS for `*.github.io` domains
 
 ### Cloudflare
-- **CNAME Flattening**: Enables root domain (`sveinbjorn.dev`) to point to GitHub Pages
+- **CNAME Flattening**: Enables root domain (`sveinbjörn.is`) to point to GitHub Pages
 - **Global CDN**: Worldwide caching and edge delivery
 - **Enhanced HTTPS**: SSL/TLS termination and security features
 - **Analytics & Performance**: Real-time insights and optimization
