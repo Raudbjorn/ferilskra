@@ -58,12 +58,12 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const pdfUrl = 'https://sveinbjörn.is/SveinbjörnGeirsson.pdf';
+#            const pdfUrl = 'https://sveinbjörn.is/SveinbjörnGeirsson.pdf';
             const pdfViewer = document.getElementById('pdfViewer');
             const loadingMessage = document.getElementById('loadingMessage');
             
             // Use Mozilla's hosted PDF.js viewer
-            const viewerUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(pdfUrl)}`;
+            const viewerUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=https://xn--sveinbjrn-67a.is/Sveinbj%C3%B6rnGeirsson.pdf`;
             
             pdfViewer.src = viewerUrl;
             
