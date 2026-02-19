@@ -60,17 +60,14 @@
         document.addEventListener('DOMContentLoaded', function() {
             const pdfViewer = document.getElementById('pdfViewer');
             const loadingMessage = document.getElementById('loadingMessage');
-            
-            // Use Mozilla's hosted PDF.js viewer
-            const viewerUrl = `https://mozilla.github.io/pdf.js/web/viewer.html?file=https://xn--sveinbjrn-67a.is/Sveinbj%C3%B6rnGeirsson.pdf`;
-            
-            pdfViewer.src = viewerUrl;
-            
+
+            pdfViewer.src = 'Sveinbj%C3%B6rnGeirsson.pdf';
+
             pdfViewer.onload = function() {
                 loadingMessage.style.display = 'none';
                 pdfViewer.style.display = 'block';
             };
-            
+
             pdfViewer.onerror = function() {
                 loadingMessage.innerHTML = '<div class="error"><h2>Villa við að hlaða PDF</h2><p>Gat ekki hlaðið PDF skrá.</p></div>';
             };
